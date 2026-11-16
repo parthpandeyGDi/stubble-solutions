@@ -1,0 +1,41 @@
+@import url("pathway-nav.css");
+
+.logo-link {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  line-height: 0;
+}
+
+.logo-link img {
+  display: block;
+  width: auto;
+  height: 42px;
+  object-fit: contain;
+}
+
+.footer-logo img {
+  height: 36px;
+}
+
+.evidence-link {
+  font: 600 12px "DM Sans", sans-serif;
+  color: #c93612;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+}
+
+.evidence-link:hover {
+  color: #173b5c;
+}
+
+@media (max-width: 800px) {
+  .logo-link img {
+    height: 34px;
+  }
+
+  .footer-logo img {
+    height: 32px;
+  }
+}

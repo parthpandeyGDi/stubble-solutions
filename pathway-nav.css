@@ -1,0 +1,308 @@
+.topbar {
+  z-index: 100 !important;
+  overflow: visible !important;
+}
+
+.topbar > nav.pathway-nav {
+  position: relative;
+  display: flex !important;
+  align-items: center;
+  margin-left: clamp(32px, 5vw, 80px);
+  margin-right: auto;
+}
+
+.pathway-menu,
+.pathway-bucket {
+  position: relative;
+}
+
+.pathway-menu summary,
+.pathway-bucket summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.pathway-menu summary::-webkit-details-marker,
+.pathway-bucket summary::-webkit-details-marker {
+  display: none;
+}
+
+.pathway-trigger {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-height: 42px;
+  padding: 0 16px;
+  border: 1px solid #cad5da;
+  background: #fff;
+  color: #173b5c;
+  font: 700 12px "DM Sans", sans-serif;
+  letter-spacing: .01em;
+  transition: border-color .18s, background .18s, color .18s;
+}
+
+.pathway-trigger::after {
+  content: "+";
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  background: #edf2f0;
+  color: #c93612;
+  font: 500 16px/1 "DM Mono", monospace;
+  transition: transform .18s;
+}
+
+.pathway-menu[open] > .pathway-trigger,
+.pathway-menu:hover > .pathway-trigger,
+.pathway-menu:focus-within > .pathway-trigger {
+  border-color: #204b75;
+  background: #204b75;
+  color: #fff;
+}
+
+.pathway-menu[open] > .pathway-trigger::after,
+.pathway-menu:hover > .pathway-trigger::after,
+.pathway-menu:focus-within > .pathway-trigger::after {
+  transform: rotate(45deg);
+}
+
+.pathway-panel {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: auto;
+  right: 0;
+  width: 300px;
+  padding: 9px;
+  background: #fff;
+  border-top: 4px solid #c93612;
+  box-shadow: 0 22px 55px rgba(19, 49, 73, .22);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity .16s, transform .16s, visibility .16s;
+}
+
+.pathway-panel::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -16px;
+  height: 16px;
+}
+
+.pathway-menu[open] > .pathway-panel,
+.pathway-menu:hover > .pathway-panel,
+.pathway-menu:focus-within > .pathway-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.pathway-panel-label {
+  display: block;
+  padding: 10px 12px 8px;
+  color: #7a898f;
+  font: 500 10px "DM Mono", monospace;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.pathway-bucket > summary {
+  position: relative;
+  display: grid;
+  grid-template-columns: 34px 1fr 18px;
+  align-items: center;
+  gap: 10px;
+  min-height: 66px;
+  padding: 8px 12px;
+  border-top: 1px solid #d8e0e2;
+  color: #173b5c;
+}
+
+.pathway-bucket > summary > b {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  background: #edf2f0;
+  color: #c93612;
+  font: 500 11px "DM Mono", monospace;
+}
+
+.pathway-bucket > summary > span {
+  display: grid;
+  gap: 3px;
+}
+
+.pathway-bucket > summary strong {
+  font-size: 14px;
+  line-height: 1.15;
+}
+
+.pathway-bucket > summary small {
+  color: #718087;
+  font: 10px/1.25 "DM Sans", sans-serif;
+}
+
+.pathway-bucket > summary > i {
+  color: #c93612;
+  font: normal 18px "DM Sans", sans-serif;
+}
+
+.pathway-bucket:hover > summary,
+.pathway-bucket[open] > summary,
+.pathway-bucket:focus-within > summary {
+  background: #edf2f0;
+}
+
+.pathway-submenu {
+  position: absolute;
+  top: -4px;
+  left: calc(100% + 9px);
+  width: 270px;
+  padding: 12px;
+  background: #173b5c;
+  box-shadow: 0 22px 55px rgba(19, 49, 73, .24);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(8px);
+  transition: opacity .16s, transform .16s, visibility .16s;
+}
+
+.pathway-submenu::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -12px;
+  width: 12px;
+}
+
+.pathway-bucket:hover > .pathway-submenu,
+.pathway-bucket[open] > .pathway-submenu,
+.pathway-bucket:focus-within > .pathway-submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+.topbar nav.pathway-nav .pathway-submenu a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 13px 11px;
+  border-bottom: 1px solid #49657b;
+  color: #eaf0f2;
+  font: 500 13px "DM Sans", sans-serif;
+  text-decoration: none;
+}
+
+.topbar nav.pathway-nav .pathway-submenu a:last-child {
+  border-bottom: 0;
+}
+
+.topbar nav.pathway-nav .pathway-submenu a::after {
+  content: "\2192" !important;
+  position: static !important;
+  border: 0 !important;
+  color: #f2b7a3;
+}
+
+.topbar nav.pathway-nav .pathway-submenu a:hover,
+.topbar nav.pathway-nav .pathway-submenu a:focus-visible,
+.topbar nav.pathway-nav .pathway-submenu a[aria-current="page"] {
+  padding-left: 15px;
+  background: #204b75;
+  color: #fff;
+}
+
+.topbar .top-cta.pathway-source-link {
+  margin-left: 16px;
+  white-space: nowrap;
+}
+
+.is-subnav,
+.ex-subnav {
+  display: none !important;
+}
+
+@media (max-width: 800px) {
+  .topbar > nav.pathway-nav {
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  .pathway-trigger {
+    min-height: 38px;
+    padding: 0 11px;
+    font-size: 11px;
+  }
+
+  .topbar .top-cta.pathway-source-link {
+    display: none !important;
+  }
+
+  .pathway-panel {
+    position: fixed;
+    top: 64px;
+    left: 12px;
+    right: 12px;
+    width: auto;
+    max-height: calc(100vh - 78px);
+    overflow-y: auto;
+    transform: translateY(8px);
+  }
+
+  .pathway-menu[open] > .pathway-panel,
+  .pathway-menu:hover > .pathway-panel,
+  .pathway-menu:focus-within > .pathway-panel {
+    transform: translateY(0);
+  }
+
+  .pathway-bucket > summary {
+    grid-template-columns: 34px 1fr 18px;
+    min-height: 62px;
+  }
+
+  .pathway-bucket > summary > i {
+    transform: rotate(90deg);
+    transition: transform .16s;
+  }
+
+  .pathway-bucket[open] > summary > i {
+    transform: rotate(-90deg);
+  }
+
+  .pathway-submenu {
+    position: static;
+    width: auto;
+    margin: 0;
+    padding: 5px 12px 10px 56px;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    display: none;
+  }
+
+  .pathway-bucket[open] > .pathway-submenu {
+    display: block;
+  }
+
+  .pathway-bucket:hover:not([open]) > .pathway-submenu,
+  .pathway-bucket:focus-within:not([open]) > .pathway-submenu {
+    display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .pathway-trigger span {
+    max-width: 104px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
