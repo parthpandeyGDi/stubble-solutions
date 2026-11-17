@@ -60,7 +60,7 @@
         <div class="section-intro split"><div><p class="kicker">01 / The 2025 result</p><h2>Punjab’s progress is judged by fire counts, and a fire count measures only part of the burning.</h2></div><p>Punjab’s 2025 paddy-season count fell 53% from 2024, the lowest recorded under CAQM’s seasonal monitoring. Burnt area is a second way to measure the same season, and it answers a different question.</p></div>
         <div class="rm-stats two">
           <article class="rm-card"><span class="lbl">CAQM / CREAMS · 2025 season</span><strong>5,114</strong><p>Fire events recorded under the standard protocol, 53% below 2024.</p><span class="by">Source: CAQM, via PIB, December 2025</span></article>
-          <article class="rm-card"><span class="lbl">iFOREST Fire Watch · kharif 2025</span><strong>11,085<small>sq km</small></strong><p>Burnt area, 27% of the agricultural area in iFOREST’s district file.</p><span class="by">Source: iFOREST district burnt-area file</span></article>
+          <article class="rm-card"><span class="lbl">iFOREST Fire Watch · kharif 2025</span><strong>11,085<small>sq km</small></strong><p>Burnt area, 27% of the agricultural area.</p><span class="by">Source: iFOREST district burnt-area file</span></article>
         </div>
         <p class="rm-src"><b>Sources</b><a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2197201&amp;lang=2&amp;reg=3" target="_blank" rel="noreferrer">CAQM 2025 season result, PIB ↗</a> · CREAMS daily bulletins, ICAR-IARI · <a href="https://firewatch.iforest.global/methodology/" target="_blank" rel="noreferrer">iFOREST Fire Watch methodology ↗</a> · iFOREST district burnt-area file. The file gives no dates, and its “agricultural area” is total agricultural land, not paddy area.</p>
       </div></section>
@@ -75,7 +75,6 @@
           <li><span class="n">3</span><b>Only cropland is kept</b><p>A detection counts only if it falls on cropland in a mask derived from ESA WorldCover 2021.</p></li>
           <li><span class="n">4</span><b>Detections are totalled</b><p>Each detection is placed in a district, converted to Indian Standard Time, and totalled by district, season and day.</p></li>
         </ol>
-        <p class="rm-flow-end"><b>The result is a count of detections, not a count of fires.</b> iFOREST states that the dashboard reports fire detections, not the number of fires.</p>
         <p class="rm-src"><b>Source</b><a href="https://firewatch.iforest.global/methodology/" target="_blank" rel="noreferrer">iFOREST Fire Watch methodology, active fire count method ↗</a>, accessed 17 November 2026.</p>
 
         <h3 class="rm-sub">Which satellites are used</h3>
@@ -88,7 +87,7 @@
             <tr><td><b>Meteosat 8 and 9</b></td><td>SEVIRI</td><td>about 4 to 6 km</td><td>Every 15 minutes</td><td><span class="tag time">Daily fire timing only</span></td></tr>
           </tbody>
         </table></div>
-        <p class="rm-sat-note">Polar-orbiting satellites pass over a place once or twice a day. Meteosat stays fixed over one region and looks every 15 minutes, but at a coarser scale, so iFOREST uses it to show when detectable burning occurs, not to count fires. Actual pass times can differ from the usual ones because of orbital drift.</p>
+        <p class="rm-sat-note">Polar-orbiting satellites pass over a place once or twice a day. Meteosat stays fixed over one region and looks every 15 minutes, but at a coarser scale, so it is used to show when detectable burning occurs, not to count fires. Actual pass times can differ from the usual ones because of orbital drift.</p>
         <p class="rm-src"><b>Sources</b><a href="https://firewatch.iforest.global/methodology/" target="_blank" rel="noreferrer">iFOREST Fire Watch methodology, data sources table ↗</a> · CREAMS daily bulletins, ICAR-IARI. The table is iFOREST’s. The CREAMS bulletins list Aqua, S-NPP and NOAA-20 as their satellites, and S-NPP is not in iFOREST’s table, so its details are not shown here.</p>
 
         <h3 class="rm-sub">What a fire count cannot tell you</h3>
@@ -101,7 +100,7 @@
       </div></section>
 
       <section id="burnt-area" class="rm-section"><div class="container">
-        <div class="section-intro split"><div><p class="kicker">03 / Mapping burnt area</p><h2>Burnt area is mapped from before-and-after images, not from fire detections.</h2></div><p>iFOREST estimates burnt area independently of its fire counts, using Sentinel-2 imagery. The satellite revisits the same ground about every five days, so the method compares how each field looked before and after the burning season.</p></div>
+        <div class="section-intro split"><div><p class="kicker">03 / Mapping burnt area</p><h2>Burnt area is mapped from before-and-after images, not from fire detections.</h2></div><p>Burnt area is estimated independently of fire counts, using Sentinel-2 imagery. The satellite revisits the same ground about every five days, so the method compares how each field looked before and after the burning season.</p></div>
         <div class="rm-stepper">
           <ol class="rm-steplist" id="rm-steplist" aria-label="Seven steps of the burnt-area method"></ol>
           <div class="rm-stage">
@@ -114,14 +113,14 @@
           </div>
         </div>
         <div class="rm-pubgrid">
-          <div class="rm-pub yes"><h3>What iFOREST publishes</h3><ul><li>The satellite and resolution: Sentinel-2 at 20 m, nominal revisit of five days.</li><li>The index: Normalized Burn Ratio, and its change between images (dNBR).</li><li>Time windows of 5 to 10 days, and the use of the least-cloudy valid images.</li><li>State- and season-specific thresholds, applied to cropland only.</li><li>Each pixel counted once per season.</li></ul></div>
-          <div class="rm-pub no"><h3>What it does not publish</h3><ul><li>The numeric dNBR or NBR thresholds for each state and season.</li><li>The exact NBR formula and the cloud-masking method.</li><li>Ground truthing, validation or an accuracy assessment.</li><li>Uncertainty ranges or confidence intervals.</li><li>The start and end dates of the analysis window, and a version or update date.</li></ul></div>
+          <div class="rm-pub yes"><h3>What is published about the method</h3><ul><li>The satellite and resolution: Sentinel-2 at 20 m, nominal revisit of five days.</li><li>The index: Normalized Burn Ratio, and its change between images (dNBR).</li><li>Time windows of 5 to 10 days, and the use of the least-cloudy valid images.</li><li>State- and season-specific thresholds, applied to cropland only.</li><li>Each pixel counted once per season.</li></ul></div>
+          <div class="rm-pub no"><h3>What is not published</h3><ul><li>The numeric dNBR or NBR thresholds for each state and season.</li><li>The exact NBR formula and the cloud-masking method.</li><li>Ground truthing, validation or an accuracy assessment.</li><li>Uncertainty ranges or confidence intervals.</li><li>The start and end dates of the analysis window, and a version or update date.</li></ul></div>
         </div>
         <p class="rm-src"><b>Sources</b><a href="https://firewatch.iforest.global/methodology/" target="_blank" rel="noreferrer">iFOREST Fire Watch methodology, sections 2 and 4 ↗</a>, accessed 16 November 2026. The page carries no date or version. The pixel grid is a GDi illustration with invented values; it shows the order of the steps and uses no real thresholds. The description of NBR as a comparison of near-infrared and short-wave infrared light is from iFOREST’s launch webinar, 5 November 2026.</p>
       </div></section>
 
       <section id="districts" class="rm-section pale"><div class="container">
-        <div class="section-intro split"><div><p class="kicker">04 / Reading the district picture</p><h2>Districts with the same fire count can have very different burnt area.</h2></div><p>Switch the map between the measures. All three come from the iFOREST Fire Watch district files for 2025.</p></div>
+        <div class="section-intro split"><div><p class="kicker">04 / Reading the district picture</p><h2>Districts with the same fire count can have very different burnt area.</h2></div><p>Switch the map between the measures. All three come from district data for 2025.</p></div>
         <div class="rm-toggle" id="rm-toggle" role="group" aria-label="Choose a measure"></div>
         <div class="rm-mapgrid">
           <div class="rm-map"><figure class="rm-fig"><div id="rm-map"></div><div class="rm-scale" id="rm-scale"></div><figcaption>District outlines are from the GDi fire dashboard. Malerkotla has an outline there but no separate value in the iFOREST files.</figcaption></figure></div>
@@ -143,9 +142,9 @@
         <h3 style="margin-top:56px;font-size:28px">What burnt area cannot tell you</h3>
         <div class="rm-limits">
           <article class="rm-limit"><h3>It is not a direct fire detection</h3><p>Harvesting or tillage can cause a similar change between two images.</p><div class="by">Source: iFOREST methodology, section 6</div></article>
-          <article class="rm-limit"><h3>Clouds limit coverage</h3><p>iFOREST advises checking the share of cropland with valid imagery before reading a result.</p><div class="by">Source: iFOREST methodology, section 4</div></article>
+          <article class="rm-limit"><h3>Clouds limit coverage</h3><p>The share of cropland with valid imagery should be checked before a result is read.</p><div class="by">Source: iFOREST methodology, section 4</div></article>
           <article class="rm-limit"><h3>The cropland mask sets the denominator</h3><p>Percentages of cropland depend on how cropland is defined, so districts and states need context before they are compared.</p><div class="by">Source: iFOREST methodology, section 6</div></article>
-          <article class="rm-limit"><h3>Accuracy is not published</h3><p>The methodology page lists no validation or uncertainty range. At its launch webinar on 5 November 2026, iFOREST presented Punjab’s kharif 2025 burnt area as a range of about 11,000 to about 21,000 sq km. The district file used here totals 11,085 sq km, near the lower end. iFOREST has not published how low and high are defined.</p><div class="by">Source: iFOREST methodology, section 6; iFOREST launch webinar, 5 November 2026</div></article>
+          <article class="rm-limit"><h3>Accuracy is not published</h3><p>No validation or uncertainty range is published. At the Fire Watch launch webinar on 5 November 2026, Punjab’s kharif 2025 burnt area was presented as a range of about 11,000 to about 21,000 sq km. The district file used here totals 11,085 sq km, near the lower end. How low and high are defined has not been published.</p><div class="by">Source: iFOREST methodology, section 6; iFOREST launch webinar, 5 November 2026</div></article>
         </div>
         <div class="rm-check">
           <div><h3>Independent checks of satellite burnt-area mapping</h3><p>CEEW has tested satellite burnt-area mapping in Punjab against ground data. Its 2025 method relied on Sentinel-2 alone and missed burnt pixels because of the five-day revisit. Its 2026 report added commercial imagery between Sentinel-2 passes.</p><p>These are CEEW’s own methods and not iFOREST’s, so they show what is possible and not how accurate iFOREST’s numbers are.</p></div>
@@ -162,14 +161,14 @@
         <div class="section-intro split"><div><p class="kicker">05 / Reading the evidence</p><h2>Read every number with its measure, its window and its unit.</h2></div><p>Five checks make a fire count or a burnt-area figure safe to quote. Each comes from how the measures are built.</p></div>
         <ol class="rm-rules">
           <li><div><b>Name the measure.</b><p>A fire count lists events or detections. Burnt area is the square kilometres of pixels that changed. They answer different questions and should not be used as substitutes.</p><span class="by">Source: iFOREST methodology, sections 3 and 4</span></div></li>
-          <li><div><b>Match the window and the season.</b><p>CREAMS bulletins run from 15 September to 30 November. iFOREST’s fire count window runs from 1 October to 31 December. Compare figures only across the same window.</p><span class="by">Source: CREAMS bulletins; iFOREST district file</span></div></li>
+          <li><div><b>Match the window and the season.</b><p>CREAMS bulletins run from 15 September to 30 November. The district fire counts used here run from 1 October to 31 December. Compare figures only across the same window.</p><span class="by">Source: CREAMS bulletins; iFOREST district file</span></div></li>
           <li><div><b>State the denominator.</b><p>A percentage of cropland depends on the cropland mask. The district file reports the share of total agricultural area, not of paddy area.</p><span class="by">Source: iFOREST methodology, section 6; iFOREST district file</span></div></li>
-          <li><div><b>Treat no detection as no evidence.</b><p>iFOREST states that the absence of a detection does not mean the absence of burning.</p><span class="by">Source: iFOREST methodology, section 6</span></div></li>
-          <li><div><b>Use the dashboards for patterns, not for farm-level action.</b><p>iFOREST says its dashboard helps to understand patterns and differences across space and time, and is not a farm-level compliance or enforcement tool.</p><span class="by">Source: iFOREST methodology, section 6</span></div></li>
+          <li><div><b>Treat no detection as no evidence.</b><p>The absence of a detection does not mean the absence of burning.</p><span class="by">Source: iFOREST methodology, section 6</span></div></li>
+          <li><div><b>Use the dashboards for patterns, not for farm-level action.</b><p>A satellite dashboard helps to understand patterns and differences across space and time. It is not a farm-level compliance or enforcement tool.</p><span class="by">Source: iFOREST methodology, section 6</span></div></li>
         </ol>
         <h3 style="margin-top:48px;font-size:28px">What better monitoring needs</h3>
         <div class="rm-needs">
-          <article class="rm-limit"><h3>Timing beyond fixed passes</h3><p>A geostationary satellite observes every 15 minutes, so it can show when in the day detectable fires occur. iFOREST publishes this as daily fire timing.</p><div class="by">Source: iFOREST methodology, sections 2 and 5</div></article>
+          <article class="rm-limit"><h3>Timing beyond fixed passes</h3><p>A geostationary satellite observes every 15 minutes, so it can show when in the day detectable fires occur.</p><div class="by">Source: iFOREST methodology, sections 2 and 5</div></article>
           <article class="rm-limit"><h3>Imagery between Sentinel-2 passes</h3><p>CEEW’s PlanetScope test found two to five times more burnt fields, at about INR 1.2 crore per day for all of Punjab.</p><div class="by">Source: CEEW, 2026 report</div></article>
           <article class="rm-limit"><h3>Field records next to maps</h3><p>Pair field records with burnt-area mapping and fire detections over the same geography and season.</p><div class="by">Source: <a href="crm.html">Stubble Solutions, CRM machinery</a></div></article>
         </div>
