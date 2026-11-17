@@ -62,7 +62,7 @@
           <article class="rm-card"><span class="lbl">CAQM / CREAMS · 2025 season</span><strong>5,114</strong><p>Fire events recorded under the standard protocol, 53% below 2024.</p><span class="by">Source: CAQM, via PIB, December 2025</span></article>
           <article class="rm-card"><span class="lbl">iFOREST Fire Watch · kharif 2025</span><strong>11,085<small>sq km</small></strong><p>Burnt area, 27% of the agricultural area.</p><span class="by">Source: iFOREST district burnt-area file</span></article>
         </div>
-        <p class="rm-src"><b>Sources</b><a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2197201&amp;lang=2&amp;reg=3" target="_blank" rel="noreferrer">CAQM 2025 season result, PIB ↗</a> · CREAMS daily bulletins, ICAR-IARI · <a href="https://firewatch.iforest.global/methodology/" target="_blank" rel="noreferrer">iFOREST Fire Watch methodology ↗</a> · iFOREST district burnt-area file. The file gives no dates, and its “agricultural area” is total agricultural land, not paddy area.</p>
+        <p class="rm-src"><b>Sources</b><a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2197201&amp;lang=2&amp;reg=3" target="_blank" rel="noreferrer">CAQM 2025 season result, PIB ↗</a> · CREAMS daily bulletins, ICAR-IARI · <a href="https://firewatch.iforest.global/methodology/" target="_blank" rel="noreferrer">iFOREST Fire Watch methodology ↗</a> · iFOREST district burnt-area file.</p>
       </div></section>
 
       <section id="counting" class="rm-section pale"><div class="container">
@@ -75,7 +75,7 @@
           <li><span class="n">3</span><b>Only cropland is kept</b><p>A detection counts only if it falls on cropland in a mask derived from ESA WorldCover 2021.</p></li>
           <li><span class="n">4</span><b>Detections are totalled</b><p>Each detection is placed in a district, converted to Indian Standard Time, and totalled by district, season and day.</p></li>
         </ol>
-        <p class="rm-src"><b>Source</b><a href="https://firewatch.iforest.global/methodology/" target="_blank" rel="noreferrer">iFOREST Fire Watch methodology, active fire count method ↗</a>, accessed 17 November 2026.</p>
+        <p class="rm-src"><b>Source</b><a href="https://firewatch.iforest.global/methodology/" target="_blank" rel="noreferrer">iFOREST Fire Watch methodology, active fire count method ↗</a></p>
 
         <h3 class="rm-sub">Which satellites are used</h3>
         <div class="rm-sat-wrap"><table class="rm-sat">
@@ -116,14 +116,14 @@
           <div class="rm-pub yes"><h3>What is published about the method</h3><ul><li>The satellite and resolution: Sentinel-2 at 20 m, nominal revisit of five days.</li><li>The index: Normalized Burn Ratio, and its change between images (dNBR).</li><li>Time windows of 5 to 10 days, and the use of the least-cloudy valid images.</li><li>State- and season-specific thresholds, applied to cropland only.</li><li>Each pixel counted once per season.</li></ul></div>
           <div class="rm-pub no"><h3>What is not published</h3><ul><li>The numeric dNBR or NBR thresholds for each state and season.</li><li>The exact NBR formula and the cloud-masking method.</li><li>Ground truthing, validation or an accuracy assessment.</li><li>Uncertainty ranges or confidence intervals.</li><li>The start and end dates of the analysis window, and a version or update date.</li></ul></div>
         </div>
-        <p class="rm-src"><b>Sources</b><a href="https://firewatch.iforest.global/methodology/" target="_blank" rel="noreferrer">iFOREST Fire Watch methodology, sections 2 and 4 ↗</a>, accessed 16 November 2026. The page carries no date or version. The pixel grid is a GDi illustration with invented values; it shows the order of the steps and uses no real thresholds. The description of NBR as a comparison of near-infrared and short-wave infrared light is from iFOREST’s launch webinar, 5 November 2026.</p>
+        <p class="rm-src"><b>Sources</b><a href="https://firewatch.iforest.global/methodology/" target="_blank" rel="noreferrer">iFOREST Fire Watch methodology, sections 2 and 4 ↗</a></p>
       </div></section>
 
       <section id="districts" class="rm-section pale"><div class="container">
         <div class="section-intro split"><div><p class="kicker">04 / Reading the district picture</p><h2>Districts with the same fire count can have very different burnt area.</h2></div><p>Switch the map between the measures. All three come from district data for 2025.</p></div>
         <div class="rm-toggle" id="rm-toggle" role="group" aria-label="Choose a measure"></div>
         <div class="rm-mapgrid">
-          <div class="rm-map"><figure class="rm-fig"><div id="rm-map"></div><div class="rm-scale" id="rm-scale"></div><figcaption>District outlines are from the GDi fire dashboard. Malerkotla has an outline there but no separate value in the iFOREST files.</figcaption></figure></div>
+          <div class="rm-map"><figure class="rm-fig"><div id="rm-map"></div><div class="rm-scale" id="rm-scale"></div><figcaption>Hatched: Malerkotla, which has no separate value in the data.</figcaption></figure></div>
           <div>
             <div class="rm-readout" id="rm-readout" aria-live="polite"></div>
             <div class="rm-rows" id="rm-rows" aria-label="Districts ranked by the chosen measure"></div>
@@ -137,7 +137,7 @@
         <div class="rm-note">
           <p>Across the 22 districts the two rankings are closely related (rank correlation 0.83). The ratio between them is not constant. In districts with at least 50 detections, hectares burnt per detection range from 47 in Gurdaspur to 547 in Barnala.</p>
         </div>
-        <p class="rm-src"><b>Source</b>GDi analysis of the iFOREST Fire Watch district files: fire count for 1 October to 31 December 2025, and burnt area for kharif 2025. The two files cover different periods, and the burnt-area file gives no dates. “Agricultural area” is total agricultural land in the file, not paddy area.</p>
+        <p class="rm-src"><b>Source</b>iFOREST Fire Watch district files: fire count, 1 October to 31 December 2025; burnt area, kharif 2025.</p>
 
         <h3 style="margin-top:56px;font-size:28px">What burnt area cannot tell you</h3>
         <div class="rm-limits">
@@ -154,7 +154,7 @@
             <div><dt>Cost</dt><dd>About INR 1.2 crore per day for all of Punjab.</dd></div>
           </dl>
         </div>
-        <p class="rm-src"><b>Source</b>CEEW, Improving Crop Residue Burning Monitoring… (2026 report). Figures are as reported by CEEW.</p>
+        <p class="rm-src"><b>Source</b>CEEW, Improving Crop Residue Burning Monitoring… (2026 report).</p>
       </div></section>
 
       <section id="reading" class="rm-section"><div class="container">
@@ -175,12 +175,12 @@
       </div></section>
 
       <section class="rm-section pale"><div class="container">
-        <div class="section-intro split"><div><p class="kicker">Evidence register</p><h2>Sources behind this page.</h2></div><p>Labels follow the Sources page of this microsite. Time-bound figures keep their reporting date and scope.</p></div>
+        <div class="section-intro split"><div><p class="kicker">Evidence register</p><h2>Sources behind this page.</h2></div></div>
         <div class="rm-sources">
           <a class="rm-source" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2197201&amp;lang=2&amp;reg=3" target="_blank" rel="noreferrer"><span>Official / December 2025</span><b>Punjab’s final 2025 fire count</b><small>5,114 events, 53% below 2024, under CAQM’s seasonal protocol.</small></a>
-          <a class="rm-source" href="https://firewatch.iforest.global/methodology/" target="_blank" rel="noreferrer"><span>Primary research / accessed 16 November 2026</span><b>iFOREST Fire Watch methodology</b><small>Data sources, active fire count, burnt area, daily fire timing and limitations. The page carries no date or version.</small></a>
-          <div class="rm-source"><span>GDi analysis</span><b>District comparison of iFOREST files</b><small>Fire count by district (1 October to 31 December 2025) and burnt area by district (kharif 2025), summed and compared by GDi.</small></div>
-          <div class="rm-source"><span>Primary research / 5 November 2026</span><b>iFOREST Fire Watch launch webinar</b><small>Burnt-area range for Punjab, kharif 2025, and the description of NBR. No public link reviewed.</small></div>
+          <a class="rm-source" href="https://firewatch.iforest.global/methodology/" target="_blank" rel="noreferrer"><span>Primary research</span><b>iFOREST Fire Watch methodology</b><small>Data sources, active fire count, burnt area, daily fire timing and limitations.</small></a>
+          <div class="rm-source"><span>GDi analysis</span><b>District comparison of iFOREST files</b><small>Fire count by district (1 October to 31 December 2025) and burnt area by district (kharif 2025).</small></div>
+          <div class="rm-source"><span>Primary research / 5 November 2026</span><b>iFOREST Fire Watch launch webinar</b><small>Burnt-area range for Punjab, kharif 2025.</small></div>
           <div class="rm-source"><span>Official research institution / GDi analysis</span><b>CREAMS daily bulletins, ICAR-IARI</b><small>Satellites named in the fire event lists (Aqua, S-NPP, NOAA-20) and the bulletin window, 15 September to 30 November.</small></div>
           <div class="rm-source"><span>Primary research</span><b>CEEW, Improving Crop Residue Burning Monitoring…</b><small>Sentinel-2 and PlanetScope burnt-area mapping tests in Punjab; accuracy, coverage and cost.</small></div>
           <a class="rm-source" href="crm.html"><span>GDi analysis</span><b>Stubble Solutions: CRM machinery</b><small>Outcome measure pairing field records with burnt-area mapping and fire detections.</small></a>
@@ -191,6 +191,6 @@
 
     </main>
 
-    <footer class="container"><a class="wordmark logo-link footer-logo" href="index.html" aria-label="GDi Partners home"><img src="assets/gdi-logo.jpg" alt="GDi" /></a><p>Stubble Solutions / Review and monitoring</p><small>© 2026 GDi Partners. Fire counts and burnt area differ in satellite, season and unit; compare figures only like with like.</small></footer>
+    <footer class="container"><a class="wordmark logo-link footer-logo" href="index.html" aria-label="GDi Partners home"><img src="assets/gdi-logo.jpg" alt="GDi" /></a><p>Stubble Solutions / Review and monitoring</p><small>© 2026 GDi Partners</small></footer>
   </body>
 </html>
