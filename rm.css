@@ -33,7 +33,7 @@ html { color-scheme: light; }
 
 /* stat cards */
 .rm-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.rm-stats.two { grid-template-columns: repeat(2, 1fr); max-width: 780px; }
+.rm-stats.two { grid-template-columns: repeat(2, 1fr); }
 .rm-card { background: #fff; border: 1px solid var(--rm-line); border-top: 5px solid var(--rm-red); padding: 24px 24px 22px; display: flex; flex-direction: column; gap: 6px; }
 .rm-card .lbl { font: 11px 'DM Mono', monospace; letter-spacing: .06em; text-transform: uppercase; color: var(--rm-muted); }
 .rm-card strong { font-size: clamp(40px, 5vw, 58px); line-height: 1; letter-spacing: -.04em; color: var(--rm-blue); font-variant-numeric: tabular-nums; }
