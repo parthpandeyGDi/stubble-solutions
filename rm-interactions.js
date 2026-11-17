@@ -8,72 +8,47 @@
   const hex = (rgb) => "#" + rgb.map((v) => v.toString(16).padStart(2, "0")).join("");
   const INK = "#102b40", BLUE = "#173b5c", RED = "#c93612", TEAL = "#5aa7a0", MUTED = "#526977", LINE = "#c8d4da";
 
-  /* ---------- 1. Twenty-four-hour dial ---------- */
+  /* ---------- 1. Twenty-four-hour timeline ---------- */
   const clockHost = document.getElementById("rm-clock");
   if (clockHost) {
-    const cx = 480, cy = 380, r0 = 170, L = 110;
-    const ang = (h) => (h / 24) * 2 * Math.PI - Math.PI / 2;
-    const pt = (r, h) => [cx + r * Math.cos(ang(h)), cy + r * Math.sin(ang(h))];
-    const n1 = (v) => v.toFixed(1);
-    const wedge = (r1, r2, h1, h2) => {
-      const [x1, y1] = pt(r1, h1), [x2, y2] = pt(r2, h1), [x3, y3] = pt(r2, h2), [x4, y4] = pt(r1, h2);
-      return `M${n1(x1)} ${n1(y1)}L${n1(x2)} ${n1(y2)}A${r2} ${r2} 0 0 1 ${n1(x3)} ${n1(y3)}L${n1(x4)} ${n1(y4)}A${r1} ${r1} 0 0 0 ${n1(x1)} ${n1(y1)}Z`;
-    };
     const hours = D.clock.hours;
+    const X0 = 64, W = 792, SW = W / 24, BASE = 300, H = 210;
     const maxHour = Math.max(...hours.map((h) => h.aqua + h.viirs));
+    const y = (v) => BASE - (v / maxHour) * H;
+    const hx = (h) => X0 + h * SW;
     let s = "";
-    // hour dividers behind the bars
-    for (let h = 0; h < 24; h++) {
-      const [a, b] = pt(r0, h), [c, d] = pt(r0 + L, h);
-      s += `<line x1="${n1(a)}" y1="${n1(b)}" x2="${n1(c)}" y2="${n1(d)}" stroke="#e1e8eb" stroke-width="1"/>`;
+    // reported burning window, behind the bars
+    s += `<rect x="${hx(16)}" y="34" width="${6 * SW}" height="${BASE - 34}" fill="${RED}" opacity=".10"/>`;
+    s += `<rect x="${hx(16)}" y="34" width="${6 * SW}" height="5" fill="${RED}"/>`;
+    s += `<text x="${hx(16) + 8}" y="64" font-size="19" font-weight="600" fill="${RED}">Farmers report</text>`;
+    s += `<text x="${hx(16) + 8}" y="86" font-size="19" font-weight="600" fill="${RED}">burning 4 pm to 10 pm</text>`;
+    s += `<text x="${hx(16) + 8}" y="108" font-size="17" fill="${MUTED}">(Haryana survey)</text>`;
+    s += `<text x="${hx(17) + 4}" y="190" font-size="17" fill="${INK}">No detections are</text>`;
+    s += `<text x="${hx(17) + 4}" y="210" font-size="17" fill="${INK}">time-stamped after</text>`;
+    s += `<text x="${hx(17) + 4}" y="230" font-size="17" fill="${INK}">16:33 in these lists</text>`;
+    // gridlines and axis
+    s += `<line x1="${X0}" y1="${BASE}" x2="${X0 + W}" y2="${BASE}" stroke="${LINE}" stroke-width="1.5"/>`;
+    for (let h = 0; h <= 24; h++) s += `<line x1="${hx(h)}" y1="${BASE}" x2="${hx(h)}" y2="${BASE + (h % 3 === 0 ? 8 : 4)}" stroke="${LINE}"/>`;
+    for (let h = 0; h <= 24; h += 3) {
+      const lab = h === 24 ? "24:00" : String(h).padStart(2, "0") + ":00";
+      s += `<text x="${hx(h)}" y="${BASE + 34}" text-anchor="middle" font-size="19" font-family="DM Mono, monospace" fill="${MUTED}">${lab}</text>`;
     }
-    s += `<circle cx="${cx}" cy="${cy}" r="${r0}" fill="none" stroke="${LINE}"/>`;
-    s += `<circle cx="${cx}" cy="${cy}" r="${r0 + L}" fill="none" stroke="${LINE}" stroke-dasharray="3 4"/>`;
-    // Meteosat observation ticks (every 15 minutes)
-    for (let i = 0; i < 96; i++) {
-      const h = i / 4, [a, b] = pt(138, h), [c, d] = pt(148, h);
-      s += `<line x1="${n1(a)}" y1="${n1(b)}" x2="${n1(c)}" y2="${n1(d)}" stroke="#23706e" stroke-width="1.2"/>`;
-    }
-    // bars, stacked by satellite family
+    // stacked bars: VIIRS at the base, Aqua above
     hours.forEach((o) => {
-      const lv = (L * o.viirs) / maxHour, la = (L * o.aqua) / maxHour;
-      const hv = o.viirs ? Math.max(lv, 1.6) : 0, ha = o.aqua ? Math.max(la, 1.6) : 0;
-      if (o.viirs) s += `<path d="${wedge(r0, r0 + hv, o.h + 0.06, o.h + 0.94)}" fill="${TEAL}"/>`;
-      if (o.aqua) s += `<path d="${wedge(r0 + hv, r0 + hv + ha, o.h + 0.06, o.h + 0.94)}" fill="${BLUE}"/>`;
-      const tot = o.viirs + o.aqua;
-      if (tot >= 100) {
-        const [x, y] = pt(r0 + hv + ha + 20, o.h + 0.5);
-        s += `<text x="${n1(x)}" y="${n1(y)}" text-anchor="middle" dominant-baseline="middle" font-size="17" font-weight="700" fill="${INK}" stroke="#fff" stroke-width="4" paint-order="stroke">${fmt(tot)}</text>`;
-      }
+      const tot = o.aqua + o.viirs;
+      if (!tot) return;
+      const bx = hx(o.h) + 5, bw = SW - 10;
+      const yv = y(o.viirs), yt = y(tot);
+      if (o.viirs) s += `<rect x="${bx.toFixed(1)}" y="${yv.toFixed(1)}" width="${bw.toFixed(1)}" height="${(BASE - yv).toFixed(1)}" fill="${TEAL}"/>`;
+      if (o.aqua) s += `<rect x="${bx.toFixed(1)}" y="${yt.toFixed(1)}" width="${bw.toFixed(1)}" height="${(yv - yt).toFixed(1)}" fill="${BLUE}"/>`;
+      if (tot >= 100) s += `<text x="${(bx + bw / 2).toFixed(1)}" y="${(yt - 8).toFixed(1)}" text-anchor="middle" font-size="20" font-weight="700" fill="${INK}" stroke="#fff" stroke-width="4" paint-order="stroke">${fmt(tot)}</text>`;
     });
-    // reported burning window, 16:00 to 22:00
-    s += `<path d="${wedge(292, 306, 16, 22)}" fill="${RED}"/>`;
-    // nominal pass markers (iFOREST methodology table)
-    [[1.5, "NOAA-20 1:30 am", "start"], [10.5, "Terra 10:30 am", "start"], [13.5, "Aqua and NOAA-20 1:30 pm", "end"]].forEach(([h, t, anchor]) => {
-      const [x, y] = pt(299, h), [tx, ty] = pt(352, h);
-      s += `<circle cx="${n1(x)}" cy="${n1(y)}" r="7" fill="${BLUE}" stroke="#fff" stroke-width="2"/>`;
-      s += `<text x="${n1(tx)}" y="${n1(ty)}" text-anchor="${anchor}" dominant-baseline="middle" font-size="16" font-weight="600" fill="${INK}">${t}</text>`;
-    });
-    // hour numerals
-    for (let h = 0; h < 24; h += 3) {
-      const [x, y] = pt(324, h);
-      s += `<text x="${n1(x)}" y="${n1(y)}" text-anchor="middle" dominant-baseline="middle" font-size="15" font-family="DM Mono, monospace" fill="${MUTED}">${String(h).padStart(2, "0")}:00</text>`;
-    }
-    // scale labels on an empty spoke (06:00)
-    s += `<text x="${cx + r0 + 4}" y="${cy + 18}" font-size="14" fill="${MUTED}">0</text>`;
-    s += `<text x="${cx + r0 + L + 4}" y="${cy + 18}" font-size="14" fill="${MUTED}">${fmt(maxHour)}</text>`;
-    s += `<text x="${cx + r0 + 4}" y="${cy - 8}" font-size="14" fill="${MUTED}">detections per hour</text>`;
-    // night note with leader
-    const [lx, ly] = pt(r0 + 6, 2.5);
-    s += `<line x1="${n1(lx)}" y1="${n1(ly)}" x2="690" y2="108" stroke="${MUTED}" stroke-width="1"/>`;
-    s += `<text x="694" y="92" font-size="16" font-weight="600" fill="${INK}">${D.clock.night} night-time</text><text x="694" y="113" font-size="16" font-weight="600" fill="${INK}">detections, 1 to 4 am</text>`;
-    // burning window label
-    s += `<text x="170" y="270" text-anchor="end" font-size="16" font-weight="600" fill="${RED}"><tspan x="170">Burning window</tspan><tspan x="170" dy="20">reported by farmers:</tspan><tspan x="170" dy="20">4 pm to 10 pm</tspan><tspan x="170" dy="20" font-weight="400" fill="${MUTED}">(Haryana survey)</tspan></text>`;
-    // centre
-    s += `<text x="${cx}" y="${cy - 6}" text-anchor="middle" font-size="56" font-weight="700" letter-spacing="-2" fill="${INK}">${D.clock.last}</text>`;
-    s += `<text x="${cx}" y="${cy + 22}" text-anchor="middle" font-size="15" fill="${MUTED}">latest detection time stamp</text>`;
-    s += `<text x="${cx}" y="${cy + 40}" text-anchor="middle" font-size="15" fill="${MUTED}">in the CREAMS fire lists</text>`;
-    clockHost.innerHTML = `<svg viewBox="0 24 900 716" role="img" aria-label="Twenty-four-hour dial. Satellite detections in CREAMS fire lists fall between 01:29 and 16:33. Farmers in a Haryana survey report burning from 4 pm to 10 pm.">${s}</svg>`;
+    // night note
+    s += `<text x="${hx(0) + 4}" y="${BASE - 58}" font-size="19" font-weight="600" fill="${INK}">${D.clock.night} night-time</text>`;
+    s += `<text x="${hx(0) + 4}" y="${BASE - 34}" font-size="19" font-weight="600" fill="${INK}">detections, 1 to 4 am</text>`;
+    s += `<text x="${X0 - 8}" y="${BASE + 5}" text-anchor="end" font-size="18" fill="${MUTED}">0</text>`;
+    s += `<text x="${X0 - 8}" y="${(y(maxHour) + 5).toFixed(0)}" text-anchor="end" font-size="18" fill="${MUTED}">${fmt(maxHour)}</text>`;
+    clockHost.innerHTML = `<svg viewBox="0 0 900 360" role="img" aria-label="Timeline of detections by hour of day. Detections in CREAMS fire lists fall between 01:29 and 16:33. Farmers in a Haryana survey report burning between 4 pm and 10 pm.">${s}</svg>`;
     const tb = document.getElementById("rm-clock-table");
     if (tb) {
       tb.innerHTML = hours.filter((o) => o.aqua + o.viirs > 0).map((o) =>
