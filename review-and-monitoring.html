@@ -66,29 +66,38 @@
       </div></section>
 
       <section id="counting" class="rm-section pale"><div class="container">
-        <div class="section-intro split"><div><p class="kicker">02 / Counting fires</p><h2>A fire count records what a satellite sees at the moment it passes.</h2></div><p>Polar-orbiting satellites cross Punjab at set times of day. iFOREST’s methodology says small, short-lived or cloud-obscured fires may be missed, and that several observations can come from one event.</p></div>
-        <div class="rm-clock">
-          <figure class="rm-fig">
-            <div id="rm-clock"></div>
-            <ul class="rm-legend" aria-label="Legend">
-              <li><i class="rm-sw" style="background:#173b5c"></i>MODIS Aqua detections</li>
-              <li><i class="rm-sw" style="background:#5aa7a0"></i>VIIRS detections (NOAA-20 and S-NPP)</li>
-              <li><i class="rm-sw" style="background:#c93612"></i>Burning window reported by farmers</li>
-            </ul>
-            <figcaption>Each bar shows the detections time-stamped in that hour in CREAMS fire lists for 15 September to 15 November 2026 (5,952 detections, tallest bar 2,026). Times are as stamped in the bulletins, in Indian Standard Time.</figcaption>
-            <details class="rm-table"><summary>Show the detections as a table</summary><table><thead><tr><th>Hour</th><th>VIIRS</th><th>Aqua</th><th>All</th></tr></thead><tbody id="rm-clock-table"></tbody></table></details>
-          </figure>
-          <div class="rm-readings">
-            <div class="rm-reading"><span>Satellite passes</span><p>iFOREST lists Terra at 10:30 am, Aqua at 1:30 pm, and NOAA-20 at 1:30 pm and 1:30 am as nominal times, and notes that actual acquisition times can differ because of orbital drift.</p><em>Source: iFOREST methodology, data sources table</em></div>
-            <div class="rm-reading teal"><span>Recorded detections</span><p>In the CREAMS lists, nearly all of Aqua’s 3,441 detections are time-stamped between 15:00 and 16:59. The two VIIRS satellites’ 2,511 fall between 12:00 and 14:59, apart from 51 at night between 01:00 and 03:59. In all, 52 detections are night-time, and none is stamped after 16:33.</p><em>Source: CREAMS daily bulletins; GDi analysis</em></div>
-            <div class="rm-reading red"><span>Reported burning</span><p>In a CEEW survey of 1,588 farmers in Haryana, 77% of those reporting village burning said it happens between 4 pm and 10 pm.</p><em>Source: CEEW, Action Agenda for Mitigating Stubble Burning in Haryana. The survey covers Haryana, not Punjab.</em></div>
-          </div>
+        <div class="section-intro split"><div><p class="kicker">02 / Counting fires</p><h2>A fire count is built from satellite snapshots, and each satellite sees Punjab only briefly.</h2></div><p>iFOREST publishes how its fire count is built. The steps below follow its methodology page. CREAMS, the source of the official 5,114, does not publish its method in the material reviewed for this page.</p></div>
+
+        <h3 class="rm-sub">How a fire gets counted</h3>
+        <ol class="rm-flow">
+          <li><span class="n">1</span><b>A satellite detects heat</b><p>Sensors on polar-orbiting satellites pick up thermal anomalies from burning in croplands as they pass overhead.</p></li>
+          <li><span class="n">2</span><b>Low-confidence detections are removed</b><p>NOAA-20 keeps nominal- and high-confidence detections. MODIS keeps detections with confidence of at least 30%.</p></li>
+          <li><span class="n">3</span><b>Only cropland is kept</b><p>A detection counts only if it falls on cropland in a mask derived from ESA WorldCover 2021.</p></li>
+          <li><span class="n">4</span><b>Detections are totalled</b><p>Each detection is placed in a district, converted to Indian Standard Time, and totalled by district, season and day.</p></li>
+        </ol>
+        <p class="rm-flow-end"><b>The result is a count of detections, not a count of fires.</b> iFOREST states that the dashboard reports fire detections, not the number of fires.</p>
+        <p class="rm-src"><b>Source</b><a href="https://firewatch.iforest.global/methodology/" target="_blank" rel="noreferrer">iFOREST Fire Watch methodology, active fire count method ↗</a>, accessed 17 November 2026.</p>
+
+        <h3 class="rm-sub">Which satellites are used</h3>
+        <div class="rm-sat-wrap"><table class="rm-sat">
+          <thead><tr><th>Satellite</th><th>Sensor</th><th>Resolution</th><th>Usual pass over India</th><th>Used for</th></tr></thead>
+          <tbody>
+            <tr><td><b>NOAA-20</b></td><td>VIIRS</td><td>375 m</td><td>1:30 pm and 1:30 am</td><td><span class="tag count">Fire count</span></td></tr>
+            <tr><td><b>Aqua</b></td><td>MODIS</td><td>1 km</td><td>1:30 pm</td><td><span class="tag count">Fire count</span></td></tr>
+            <tr><td><b>Terra</b></td><td>MODIS</td><td>1 km</td><td>10:30 am</td><td><span class="tag count">Fire count</span></td></tr>
+            <tr><td><b>Meteosat 8 and 9</b></td><td>SEVIRI</td><td>about 4 to 6 km</td><td>Every 15 minutes</td><td><span class="tag time">Daily fire timing only</span></td></tr>
+          </tbody>
+        </table></div>
+        <p class="rm-sat-note">Polar-orbiting satellites pass over a place once or twice a day. Meteosat stays fixed over one region and looks every 15 minutes, but at a coarser scale, so iFOREST uses it to show when detectable burning occurs, not to count fires. Actual pass times can differ from the usual ones because of orbital drift.</p>
+        <p class="rm-src"><b>Sources</b><a href="https://firewatch.iforest.global/methodology/" target="_blank" rel="noreferrer">iFOREST Fire Watch methodology, data sources table ↗</a> · CREAMS daily bulletins, ICAR-IARI. The table is iFOREST’s. The CREAMS bulletins list Aqua, S-NPP and NOAA-20 as their satellites, and S-NPP is not in iFOREST’s table, so its details are not shown here.</p>
+
+        <h3 class="rm-sub">What a fire count cannot tell you</h3>
+        <div class="rm-limits">
+          <article class="rm-limit"><h3>Small and short fires can be missed</h3><p>Small, short-lived, low-intensity or cloud-obscured fires may not be detected. A satellite sees only the moment it passes.</p><div class="by">Source: iFOREST methodology, limitations</div></article>
+          <article class="rm-limit"><h3>One fire can be counted more than once</h3><p>Several satellite observations can correspond to the same burning event, so the count is not the number of fires.</p><div class="by">Source: iFOREST methodology, limitations</div></article>
+          <article class="rm-limit"><h3>A low count is not proof of less burning</h3><p>A low satellite-derived count may reflect limited detection as well as genuinely lower activity. Clouds and the atmosphere can reduce the fire signals visible in some periods.</p><div class="by">Source: iFOREST methodology, limitations</div></article>
+          <article class="rm-limit"><h3>Districts need context before they are compared</h3><p>Cropland extent, field size, crop types and burning practices all affect what satellites observe.</p><div class="by">Source: iFOREST methodology, limitations</div></article>
         </div>
-        <div class="rm-note">
-          <p><b>The detection lists end before the reported burning window does.</b> The Punjab lists stop at 16:33, while the Haryana survey places most village burning between 4 pm and 10 pm. A survey of Punjab farmers would be needed to confirm the same pattern here.</p>
-          <p>iFOREST also publishes daily fire timing from a geostationary satellite that observes every 15 minutes. It shows a relative pattern of detectable activity, not a count of fires, and favours larger, hotter or longer-lasting fires.</p>
-        </div>
-        <p class="rm-src"><b>Sources</b><a href="https://firewatch.iforest.global/methodology/" target="_blank" rel="noreferrer">iFOREST Fire Watch methodology ↗</a> · CREAMS daily bulletins, ICAR-IARI, processed by GDi’s fire dashboard · CEEW, Action Agenda for Mitigating Stubble Burning in Haryana.</p>
       </div></section>
 
       <section id="burnt-area" class="rm-section"><div class="container">
@@ -173,8 +182,7 @@
           <a class="rm-source" href="https://firewatch.iforest.global/methodology/" target="_blank" rel="noreferrer"><span>Primary research / accessed 16 November 2026</span><b>iFOREST Fire Watch methodology</b><small>Data sources, active fire count, burnt area, daily fire timing and limitations. The page carries no date or version.</small></a>
           <div class="rm-source"><span>GDi analysis</span><b>District comparison of iFOREST files</b><small>Fire count by district (1 October to 31 December 2025) and burnt area by district (kharif 2025), summed and compared by GDi.</small></div>
           <div class="rm-source"><span>Primary research / 5 November 2026</span><b>iFOREST Fire Watch launch webinar</b><small>Burnt-area range for Punjab, kharif 2025, and the description of NBR. No public link reviewed.</small></div>
-          <div class="rm-source"><span>Official research institution / GDi analysis</span><b>CREAMS daily bulletins, ICAR-IARI</b><small>Fire event lists behind the 24-hour dial: 15 September to 15 November 2026, 5,952 detections, read daily by GDi’s fire dashboard.</small></div>
-          <div class="rm-source"><span>Primary research</span><b>CEEW, Action Agenda for Mitigating Stubble Burning in Haryana</b><small>Survey of 1,588 farmers; 77% of those reporting village burning say it happens between 4 pm and 10 pm.</small></div>
+          <div class="rm-source"><span>Official research institution / GDi analysis</span><b>CREAMS daily bulletins, ICAR-IARI</b><small>Satellites named in the fire event lists (Aqua, S-NPP, NOAA-20) and the bulletin window, 15 September to 30 November.</small></div>
           <div class="rm-source"><span>Primary research</span><b>CEEW, Improving Crop Residue Burning Monitoring…</b><small>Sentinel-2 and PlanetScope burnt-area mapping tests in Punjab; accuracy, coverage and cost.</small></div>
           <a class="rm-source" href="crm.html"><span>GDi analysis</span><b>Stubble Solutions: CRM machinery</b><small>Outcome measure pairing field records with burnt-area mapping and fire detections.</small></a>
         </div>

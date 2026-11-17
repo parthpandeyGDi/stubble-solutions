@@ -1,4 +1,4 @@
-/* Review and monitoring page: 24-hour dial, seven-step burnt-area schematic, district map.
+/* Review and monitoring page: seven-step burnt-area schematic, district map.
    Plain JavaScript, no libraries. Data comes from rm-data.js (window.RM_DATA). */
 (() => {
   const D = window.RM_DATA;
@@ -7,55 +7,6 @@
   const lerp = (a, b, t) => a.map((v, i) => Math.round(v + (b[i] - v) * t));
   const hex = (rgb) => "#" + rgb.map((v) => v.toString(16).padStart(2, "0")).join("");
   const INK = "#102b40", BLUE = "#173b5c", RED = "#c93612", TEAL = "#5aa7a0", MUTED = "#526977", LINE = "#c8d4da";
-
-  /* ---------- 1. Twenty-four-hour timeline ---------- */
-  const clockHost = document.getElementById("rm-clock");
-  if (clockHost) {
-    const hours = D.clock.hours;
-    const X0 = 64, W = 792, SW = W / 24, BASE = 300, H = 210;
-    const maxHour = Math.max(...hours.map((h) => h.aqua + h.viirs));
-    const y = (v) => BASE - (v / maxHour) * H;
-    const hx = (h) => X0 + h * SW;
-    let s = "";
-    // reported burning window, behind the bars
-    s += `<rect x="${hx(16)}" y="34" width="${6 * SW}" height="${BASE - 34}" fill="${RED}" opacity=".10"/>`;
-    s += `<rect x="${hx(16)}" y="34" width="${6 * SW}" height="5" fill="${RED}"/>`;
-    s += `<text x="${hx(16) + 8}" y="64" font-size="19" font-weight="600" fill="${RED}">Farmers report</text>`;
-    s += `<text x="${hx(16) + 8}" y="86" font-size="19" font-weight="600" fill="${RED}">burning 4 pm to 10 pm</text>`;
-    s += `<text x="${hx(16) + 8}" y="108" font-size="17" fill="${MUTED}">(Haryana survey)</text>`;
-    s += `<text x="${hx(17) + 4}" y="190" font-size="17" fill="${INK}">No detections are</text>`;
-    s += `<text x="${hx(17) + 4}" y="210" font-size="17" fill="${INK}">time-stamped after</text>`;
-    s += `<text x="${hx(17) + 4}" y="230" font-size="17" fill="${INK}">16:33 in these lists</text>`;
-    // gridlines and axis
-    s += `<line x1="${X0}" y1="${BASE}" x2="${X0 + W}" y2="${BASE}" stroke="${LINE}" stroke-width="1.5"/>`;
-    for (let h = 0; h <= 24; h++) s += `<line x1="${hx(h)}" y1="${BASE}" x2="${hx(h)}" y2="${BASE + (h % 3 === 0 ? 8 : 4)}" stroke="${LINE}"/>`;
-    for (let h = 0; h <= 24; h += 3) {
-      const lab = h === 24 ? "24:00" : String(h).padStart(2, "0") + ":00";
-      s += `<text x="${hx(h)}" y="${BASE + 34}" text-anchor="middle" font-size="19" font-family="DM Mono, monospace" fill="${MUTED}">${lab}</text>`;
-    }
-    // stacked bars: VIIRS at the base, Aqua above
-    hours.forEach((o) => {
-      const tot = o.aqua + o.viirs;
-      if (!tot) return;
-      const bx = hx(o.h) + 5, bw = SW - 10;
-      const yv = y(o.viirs), yt = y(tot);
-      if (o.viirs) s += `<rect x="${bx.toFixed(1)}" y="${yv.toFixed(1)}" width="${bw.toFixed(1)}" height="${(BASE - yv).toFixed(1)}" fill="${TEAL}"/>`;
-      if (o.aqua) s += `<rect x="${bx.toFixed(1)}" y="${yt.toFixed(1)}" width="${bw.toFixed(1)}" height="${(yv - yt).toFixed(1)}" fill="${BLUE}"/>`;
-      if (tot >= 100) s += `<text x="${(bx + bw / 2).toFixed(1)}" y="${(yt - 8).toFixed(1)}" text-anchor="middle" font-size="20" font-weight="700" fill="${INK}" stroke="#fff" stroke-width="4" paint-order="stroke">${fmt(tot)}</text>`;
-    });
-    // night note
-    s += `<text x="${hx(0) + 4}" y="${BASE - 58}" font-size="19" font-weight="600" fill="${INK}">${D.clock.night} night-time</text>`;
-    s += `<text x="${hx(0) + 4}" y="${BASE - 34}" font-size="19" font-weight="600" fill="${INK}">detections, 1 to 4 am</text>`;
-    s += `<text x="${X0 - 8}" y="${BASE + 5}" text-anchor="end" font-size="18" fill="${MUTED}">0</text>`;
-    s += `<text x="${X0 - 8}" y="${(y(maxHour) + 5).toFixed(0)}" text-anchor="end" font-size="18" fill="${MUTED}">${fmt(maxHour)}</text>`;
-    clockHost.innerHTML = `<svg viewBox="0 0 900 360" role="img" aria-label="Timeline of detections by hour of day. Detections in CREAMS fire lists fall between 01:29 and 16:33. Farmers in a Haryana survey report burning between 4 pm and 10 pm.">${s}</svg>`;
-    const tb = document.getElementById("rm-clock-table");
-    if (tb) {
-      tb.innerHTML = hours.filter((o) => o.aqua + o.viirs > 0).map((o) =>
-        `<tr><td>${String(o.h).padStart(2, "0")}:00 to ${String(o.h).padStart(2, "0")}:59</td><td>${fmt(o.viirs)}</td><td>${fmt(o.aqua)}</td><td>${fmt(o.viirs + o.aqua)}</td></tr>`).join("") +
-        `<tr><td><b>All hours</b></td><td><b>${fmt(hours.reduce((a, o) => a + o.viirs, 0))}</b></td><td><b>${fmt(hours.reduce((a, o) => a + o.aqua, 0))}</b></td><td><b>${fmt(D.clock.total)}</b></td></tr>`;
-    }
-  }
 
   /* ---------- 2. Seven-step burnt-area schematic ---------- */
   const stageHost = document.getElementById("rm-stage");
