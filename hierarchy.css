@@ -1,0 +1,54 @@
+/* Heading hierarchy: section title > section statement > sub-headings */
+
+/* 1. Numbered section label becomes the section title */
+.kicker.section-title{display:flex;align-items:baseline;flex-wrap:wrap;gap:.1em .42em;max-width:none;margin:0 0 20px!important;font:700 clamp(30px,2.9vw,42px)/1.06 'DM Sans',Arial,sans-serif!important;letter-spacing:-.045em!important;text-transform:none!important}
+.section-title .section-num{font:500 .38em/1 'DM Mono',monospace;letter-spacing:.06em;transform:translateY(-.15em)}
+.section-title .section-name{color:#16314a}
+.section-title.on-dark .section-name{color:#fff}
+
+/* 2. The sentence under it reads as the section's lead statement */
+.section-title + h2{font-size:clamp(21px,1.8vw,26px)!important;line-height:1.3!important;letter-spacing:-.02em!important;font-weight:500!important;max-width:760px}
+
+/* 3. Sub-headings inside a section stay below the statement */
+.process-grid h3,
+.policy-timeline h3,
+.is-service-step h3,
+#boiler-process-detail h3,
+#cbg-process-detail h3,
+#machine-detail h3,
+#method-panel h3,
+#process-detail h3,
+.benefits-head h3,
+.biochar-feature.behaviour-feature h3,
+.biochar-feature.exsitu-feature h3,
+.biochar-feature.insitu-feature h3,
+.biochar-feature.reform-feature h3,
+.boiler-photo-band h3,
+.boiler-value-grid h3,
+.cbg-reading h3,
+.cbg-value-grid h3,
+.container h3[style*="font-size:28px"],
+.convening h3,
+.deal-proof h3,
+.econ-head h3,
+.ex-route h3,
+.ex-route.biochar-route h3,
+.ex-route.featured h3,
+.ex-value-chain h3,
+.fom-band h3,
+.is-case-head h3,
+.is-pilot h3,
+.is-policy h3,
+.is-route.is-navy h3,
+.is-route.is-teal h3,
+.is-surface h3,
+.is-two-col.is-cases h3,
+.numbers-heading h3,
+.path-tab-panel h3,
+.penetration-reading h3,
+.revenue-models h3,
+.snapshot-head h3,
+.state-policy-snapshot h3,
+.support-landscape h3,
+.video-intro h3,
+article.dark h3{font-size:clamp(18px,1.5vw,22px)!important;line-height:1.18!important;letter-spacing:-.03em!important}

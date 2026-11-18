@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="logo.css" />
     <link rel="stylesheet" href="ex-situ.css" />
     <link rel="stylesheet" href="rm.css?v=2026111702" />
+    <link rel="stylesheet" href="hierarchy.css" />
     <script src="pathway-nav.js" defer></script>
     <script src="rm-data.js?v=2026111702" defer></script>
     <script src="rm-interactions.js?v=2026111702" defer></script>
@@ -57,7 +58,7 @@
       </section>
 
       <section id="puzzle" class="rm-section"><div class="container">
-        <div class="section-intro split"><div><p class="kicker">01 / The 2025 result</p><h2>Punjab’s progress is judged by fire counts, and a fire count measures only part of the burning.</h2></div><p>Punjab’s 2025 paddy-season count fell 53% from 2024, the lowest recorded under CAQM’s seasonal monitoring. Burnt area is a second way to measure the same season, and it answers a different question.</p></div>
+        <div class="section-intro split"><div><p class="kicker section-title"><span class="section-num">01</span><span class="section-name">The 2025 result</span></p><h2>Punjab’s progress is judged by fire counts, and a fire count measures only part of the burning.</h2></div><p>Punjab’s 2025 paddy-season count fell 53% from 2024, the lowest recorded under CAQM’s seasonal monitoring. Burnt area is a second way to measure the same season, and it answers a different question.</p></div>
         <div class="rm-stats two">
           <article class="rm-card"><span class="lbl">CAQM / CREAMS · 2025 season</span><strong>5,114</strong><p>Fire events recorded under the standard protocol, 53% below 2024.</p><span class="by">Source: CAQM, via PIB, December 2025</span></article>
           <article class="rm-card"><span class="lbl">iFOREST Fire Watch · kharif 2025</span><strong>11,085<small>sq km</small></strong><p>Burnt area, 27% of the agricultural area.</p><span class="by">Source: iFOREST district burnt-area file</span></article>
@@ -66,7 +67,7 @@
       </div></section>
 
       <section id="counting" class="rm-section pale"><div class="container">
-        <div class="section-intro split"><div><p class="kicker">02 / Counting fires</p><h2>A fire count is built from satellite snapshots, and each satellite sees Punjab only briefly.</h2></div></div>
+        <div class="section-intro split"><div><p class="kicker section-title"><span class="section-num">02</span><span class="section-name">Counting fires</span></p><h2>A fire count is built from satellite snapshots, and each satellite sees Punjab only briefly.</h2></div></div>
 
         <h3 class="rm-sub">How a fire gets counted</h3>
         <ol class="rm-flow">
@@ -100,7 +101,7 @@
       </div></section>
 
       <section id="burnt-area" class="rm-section"><div class="container">
-        <div class="section-intro split"><div><p class="kicker">03 / Mapping burnt area</p><h2>Burnt area is mapped from before-and-after images, not from fire detections.</h2></div><p>Burnt area is estimated independently of fire counts, using Sentinel-2 imagery. The satellite revisits the same ground about every five days, so the method compares how each field looked before and after the burning season.</p></div>
+        <div class="section-intro split"><div><p class="kicker section-title"><span class="section-num">03</span><span class="section-name">Mapping burnt area</span></p><h2>Burnt area is mapped from before-and-after images, not from fire detections.</h2></div><p>Burnt area is estimated independently of fire counts, using Sentinel-2 imagery. The satellite revisits the same ground about every five days, so the method compares how each field looked before and after the burning season.</p></div>
         <div class="rm-stepper">
           <ol class="rm-steplist" id="rm-steplist" aria-label="Seven steps of the burnt-area method"></ol>
           <div class="rm-stage">
@@ -116,7 +117,7 @@
       </div></section>
 
       <section id="districts" class="rm-section pale"><div class="container">
-        <div class="section-intro split"><div><p class="kicker">04 / Reading the district picture</p><h2>Districts with the same fire count can have very different burnt area.</h2></div><p>Switch the map between the measures. All three come from district data for 2025.</p></div>
+        <div class="section-intro split"><div><p class="kicker section-title"><span class="section-num">04</span><span class="section-name">Reading the district picture</span></p><h2>Districts with the same fire count can have very different burnt area.</h2></div><p>Switch the map between the measures. All three come from district data for 2025.</p></div>
         <div class="rm-toggle" id="rm-toggle" role="group" aria-label="Choose a measure"></div>
         <div class="rm-mapgrid">
           <div class="rm-map"><figure class="rm-fig"><div id="rm-map"></div><div class="rm-scale" id="rm-scale"></div><figcaption>Hatched: Malerkotla, which has no separate value in the data.</figcaption></figure></div>
@@ -134,7 +135,7 @@
       </div></section>
 
       <section id="reading" class="rm-section"><div class="container">
-        <div class="section-intro split"><div><p class="kicker">05 / Reading the evidence</p><h2>Read every number with its measure, its window and its unit.</h2></div><p>Five checks make a fire count or a burnt-area figure safe to quote. Each comes from how the measures are built.</p></div>
+        <div class="section-intro split"><div><p class="kicker section-title"><span class="section-num">05</span><span class="section-name">Reading the evidence</span></p><h2>Read every number with its measure, its window and its unit.</h2></div><p>Five checks make a fire count or a burnt-area figure safe to quote. Each comes from how the measures are built.</p></div>
         <ol class="rm-rules">
           <li><div><b>Name the measure.</b><p>A fire count lists events or detections. Burnt area is the square kilometres of pixels that changed. They answer different questions and should not be used as substitutes.</p><span class="by">Source: iFOREST methodology, sections 3 and 4</span></div></li>
           <li><div><b>Match the window and the season.</b><p>CREAMS bulletins run from 15 September to 30 November. The district fire counts used here run from 1 October to 31 December. Compare figures only across the same window.</p><span class="by">Source: CREAMS bulletins; iFOREST district file</span></div></li>
