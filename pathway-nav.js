@@ -6,21 +6,21 @@
   const buckets = [
     {
       code: "01",
-      title: "In-situ management",
+      title: "In-Situ Management",
       note: "Manage residue in the field",
-      links: [["Overview", "in-situ.html"], ["CRM machinery", "crm.html"], ["Biodecomposers", "biodecomposer.html"]],
+      links: [["Overview", "in-situ.html"], ["CRM Machinery", "crm.html"], ["Biodecomposers", "biodecomposer.html"]],
     },
     {
       code: "02",
-      title: "Ex-situ management",
+      title: "Ex-Situ Management",
       note: "Collect, move and convert",
-      links: [["Overview", "ex-situ.html"], ["Baling and storage", "baling-storage.html"], ["Compressed biogas", "cbg.html"], ["Industrial boilers", "industrial-boilers.html"], ["Pellet-based solutions", "pellets.html"], ["Paddy-based biochar", "biochar.html"]],
+      links: [["Overview", "ex-situ.html"], ["Baling and Storage", "baling-storage.html"], ["Compressed Biogas", "cbg.html"], ["Industrial Boilers", "industrial-boilers.html"], ["Pellet-Based Solutions", "pellets.html"], ["Paddy-Based Biochar", "biochar.html"]],
     },
     {
       code: "03",
-      title: "System enablers",
+      title: "System Enablers",
       note: "Change incentives and choices",
-      links: [["Agricultural reforms", "agri-reforms.html"], ["Behaviour change", "behaviour-change.html"], ["Review and monitoring", "review-and-monitoring.html"]],
+      links: [["Agricultural Reforms", "agri-reforms.html"], ["Behaviour Change", "behaviour-change.html"], ["Review and Monitoring", "review-and-monitoring.html"]],
     },
   ];
 
@@ -36,7 +36,7 @@
 
   nav.className = "pathway-nav";
   nav.setAttribute("aria-label", "Pathway navigation");
-  nav.innerHTML = `<a href="index.html#why">The crisis</a><a href="why-it-persists.html">Why it persists</a><details class="pathway-menu"><summary class="pathway-trigger"><span>Pathway Library</span></summary><div class="pathway-panel"><span class="pathway-panel-label">Explore the complete framework</span>${bucketMarkup}</div></details>`;
+  nav.innerHTML = `<a href="index.html#why">The Crisis</a><a href="why-it-persists.html">Why It Persists</a><details class="pathway-menu"><summary class="pathway-trigger"><span>Pathway Library</span></summary><div class="pathway-panel"><span class="pathway-panel-label">Explore the complete framework</span>${bucketMarkup}</div></details>`;
 
   const oldCta = header.querySelector(":scope > .top-cta");
   if (oldCta) {
