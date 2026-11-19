@@ -52,3 +52,6 @@
 .support-landscape h3,
 .video-intro h3,
 article.dark h3{font-size:clamp(18px,1.5vw,22px)!important;line-height:1.18!important;letter-spacing:-.03em!important}
+
+/* Keep the GDi name as written, even inside all-caps labels */
+.gdi-name{text-transform:none!important;font-variant:normal!important}
