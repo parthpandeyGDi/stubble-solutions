@@ -1,7 +1,7 @@
 /* Heading hierarchy: section title > section statement > sub-headings */
 
 /* 1. Numbered section label becomes the section title */
-.kicker.section-title{display:flex;align-items:baseline;flex-wrap:wrap;gap:.1em .42em;max-width:none;margin:0 0 20px!important;font:700 clamp(30px,2.9vw,42px)/1.06 'DM Sans',Arial,sans-serif!important;letter-spacing:-.045em!important;text-transform:none!important}
+.kicker.section-title{display:flex;align-items:baseline;flex-wrap:nowrap;gap:.1em .42em;max-width:none;margin:0 0 20px!important;font:700 clamp(30px,2.9vw,42px)/1.06 'DM Sans',Arial,sans-serif!important;letter-spacing:-.045em!important;text-transform:none!important}
 .section-title .section-num{font:500 .38em/1 'DM Mono',monospace;letter-spacing:.06em;transform:translateY(-.15em)}
 .section-title .section-name{color:#16314a}
 .section-title.on-dark .section-name{color:#fff}
