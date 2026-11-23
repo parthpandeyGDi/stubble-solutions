@@ -55,7 +55,7 @@
 .numbers-heading span{color:var(--red);font:10px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.07em}
 .numbers-heading h3{margin:7px 0 0;color:var(--blue);font-size:28px;line-height:1.1;letter-spacing:-.045em}
 .numbers-heading>p{max-width:520px;margin:0;color:var(--muted);font-size:13px}
-.punjab-numbers{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line);background:#fff}
+.punjab-numbers{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line);background:#fff}
 .punjab-numbers article{min-height:210px;padding:27px 24px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;overflow:hidden}
 .punjab-numbers article:before{content:'';position:absolute;left:0;right:0;top:0;height:5px;background:var(--blue)}
 .punjab-numbers article:nth-child(2):before{background:var(--teal)}
@@ -123,7 +123,7 @@
 .pathway-roadmap b{display:block;margin:14px 0 5px;color:var(--blue);font-size:15px}
 .pathway-roadmap small{color:var(--muted);font-size:11px}
 
-@media(max-width:1050px){.punjab-numbers{grid-template-columns:repeat(3,1fr)}.punjab-numbers article{min-height:185px}.crisis-chain article{min-height:150px}.solution-levels article:nth-child(2),.solution-levels article:nth-child(3){margin-left:0}.solution-test{grid-template-columns:1fr repeat(7,auto)}}
+@media(max-width:1050px){.punjab-numbers{grid-template-columns:repeat(2,1fr)}.punjab-numbers article{min-height:185px}.crisis-chain article{min-height:150px}.solution-levels article:nth-child(2),.solution-levels article:nth-child(3){margin-left:0}.solution-test{grid-template-columns:1fr repeat(7,auto)}}
 @media(max-width:800px){.crisis-visual{margin-top:38px}.numbers-heading{grid-template-columns:1fr;gap:12px}.punjab-numbers{grid-template-columns:1fr 1fr}.punjab-numbers article{min-height:175px;padding:23px 20px}.punjab-numbers strong{font-size:30px;margin-top:20px}.numbers-note a{margin:8px 12px 0 0}.crisis-chain{grid-template-columns:1fr}.crisis-chain>i{height:34px;border:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.crisis-chain>i:nth-of-type(2){display:grid}.impact-grid{grid-template-columns:1fr}.impact-grid article{min-height:0}.solution-logic{padding:74px 0}.solution-levels article{grid-template-columns:1fr;gap:15px;padding:23px}.solution-levels article div{grid-template-columns:31px 1fr}.solution-test{grid-template-columns:1fr;text-align:center}.solution-test i{transform:rotate(90deg)}.framework-figure img{min-width:0;max-height:none;width:100%}.pathway-roadmap{margin-top:40px}.pathway-roadmap>div{grid-template-columns:1fr}}
 @media(max-width:500px){.punjab-numbers{grid-template-columns:1fr}.punjab-numbers article{min-height:0}.punjab-numbers span{min-height:0}.numbers-heading h3{font-size:25px}}
 .pathways-expanded>.exsitu-feature{background:#173b5c;color:#fff;border-color:#c93612}.pathways-expanded>.exsitu-feature p,.pathways-expanded>.exsitu-feature li{color:#dce7ec}.pathways-expanded>.exsitu-feature .feature-label span,.pathways-expanded>.exsitu-feature strong{color:#f5bea9}
