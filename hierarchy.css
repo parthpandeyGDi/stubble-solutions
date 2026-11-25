@@ -126,3 +126,17 @@ article.dark h3{font-size:clamp(18px,1.5vw,22px)!important;line-height:1.18!impo
 .pathways-expanded .biochar-feature{padding:30px 30px 28px!important;min-height:250px!important}
 .pathways-expanded .biochar-feature h3{margin:38px 0 10px!important;font-size:clamp(26px,2.2vw,34px)!important}
 .pathways-expanded .biochar-feature>p{font-size:15.5px;max-width:520px}
+
+/* Cost cards with Punjab figures */
+.impact-detailed article{align-items:start}
+.impact-detailed article p{font-size:13.5px!important;line-height:1.55}
+.impact-detailed h3{font-size:22px!important}
+.impact-stats{display:grid;gap:14px;margin:20px 0 16px;padding:16px 0 0;border-top:1px solid #e3e8ea}
+.impact-stats{grid-template-columns:1fr 1fr;gap:18px!important}
+.impact-stats div{display:flex;flex-direction:column;gap:6px;padding-left:12px;border-left:3px solid #cb3200}
+.impact-stats dt{margin:0;color:#16314a;font:700 26px/1 'DM Sans',Arial,sans-serif;letter-spacing:-.04em;white-space:nowrap}
+.impact-stats dd{margin:0;color:#4d5f6b;font-size:13px;line-height:1.45}
+.impact-source{margin:0!important;font-size:11px!important;color:#7a8a92!important}
+.impact-source a{color:#1d5f86;border-bottom:1px solid #b9cbd6}
+@media(max-width:1240px) and (min-width:801px){.impact-detailed{grid-template-columns:1fr!important}.impact-detailed article{grid-template-columns:68px 1fr}}
+@media(max-width:420px){.impact-stats{grid-template-columns:1fr}}
