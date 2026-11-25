@@ -95,3 +95,18 @@ article.dark h3{font-size:clamp(18px,1.5vw,22px)!important;line-height:1.18!impo
 .numbers-heading>p{max-width:none!important}
 .pathways-grid>div:has(>.section-title){max-width:none!important}
 .pathways-grid>div:has(>.section-title) p{max-width:none!important}
+
+/* Pathway library: five compact cards, no sub-bucket tags */
+.pathways-expanded{gap:16px!important}
+.pathways-expanded .biochar-feature{min-height:300px!important;padding:26px 24px 70px!important;box-shadow:8px 8px 0 #e6dfd2}
+.pathways-expanded .biochar-feature h3{margin:46px 0 10px!important;font-size:clamp(24px,1.9vw,29px)!important;line-height:1.08!important}
+.pathways-expanded .biochar-feature>p{font-size:14.5px;line-height:1.5}
+.pathways-expanded .biochar-feature>strong{left:24px!important;bottom:26px!important;right:20px}
+.pathways-expanded>.governance-feature{background:#e3edf2;color:#173b5c}
+.pathways-expanded>.governance-feature p{color:#526977}
+.pathways-expanded>.governance-feature .feature-label span,.pathways-expanded>.governance-feature strong{color:#1d5f86}
+.pathways-expanded>.governance-feature em{color:#1d5f86}
+@media(min-width:1440px){.pathways-expanded{grid-template-columns:repeat(5,minmax(0,1fr))!important}}
+@media(min-width:900px) and (max-width:1439px){.pathways-expanded{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
+@media(min-width:600px) and (max-width:899px){.pathways-expanded{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:599px){.pathways-expanded{grid-template-columns:1fr!important}.pathways-expanded .biochar-feature{min-height:0!important}}
