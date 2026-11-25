@@ -116,3 +116,13 @@ article.dark h3{font-size:clamp(18px,1.5vw,22px)!important;line-height:1.18!impo
 .pathways-expanded .biochar-feature h3{margin:22px 0 8px!important}
 .pathways-expanded .biochar-feature>strong{position:static!important;margin-top:auto;padding-top:18px}
 .pathways-expanded{align-items:stretch!important}
+
+/* Pathway cards: 3 + 2 layout with a little more room */
+@media(min-width:900px){
+ .pathways-expanded{grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:20px!important}
+ .pathways-expanded>.biochar-feature{grid-column:span 2}
+ .pathways-expanded>.biochar-feature.behaviour-feature,.pathways-expanded>.biochar-feature.governance-feature{grid-column:span 3}
+}
+.pathways-expanded .biochar-feature{padding:30px 30px 28px!important;min-height:250px!important}
+.pathways-expanded .biochar-feature h3{margin:38px 0 10px!important;font-size:clamp(26px,2.2vw,34px)!important}
+.pathways-expanded .biochar-feature>p{font-size:15.5px;max-width:520px}
