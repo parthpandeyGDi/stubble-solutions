@@ -7,7 +7,7 @@
 .section-title.on-dark .section-name{color:#fff}
 
 /* 2. The sentence under it reads as the section's lead statement */
-.section-title + h2{font-size:clamp(21px,1.8vw,26px)!important;line-height:1.3!important;letter-spacing:-.02em!important;font-weight:500!important;max-width:760px}
+.section-title + h2{font-size:clamp(21px,1.8vw,26px)!important;line-height:1.3!important;letter-spacing:-.02em!important;font-weight:500!important;max-width:none!important}
 
 /* 3. Sub-headings inside a section stay below the statement */
 .process-grid h3,
@@ -89,3 +89,9 @@ article.dark h3{font-size:clamp(18px,1.5vw,22px)!important;line-height:1.18!impo
 
 /* Use more of the screen on large displays */
 @media(min-width:1240px){.container,.topbar{width:min(1440px,calc(100% - 7vw))!important;max-width:none!important}.result-band,.current-status{max-width:none!important}}
+
+/* Header text runs the full width of the section title box */
+:is(.why-grid,.diagnosis-grid,.work-grid,.section-intro,.is-section-head,.section-head,.path-summary,.cbg-gdi-grid,.boiler-gdi-grid):has(.section-title) :is(h2,p,.why-copy):not(.section-title){max-width:none!important}
+.numbers-heading>p{max-width:none!important}
+.pathways-grid>div:has(>.section-title){max-width:none!important}
+.pathways-grid>div:has(>.section-title) p{max-width:none!important}
