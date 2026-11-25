@@ -51,6 +51,14 @@
     if (bucket !== except) bucket.removeAttribute("open");
   });
 
+  const trigger = menu.querySelector("summary");
+  trigger.addEventListener("click", (event) => {
+    // On desktop the menu already opens on hover; a click should keep it open, not close it.
+    if (finePointer.matches && menu.hasAttribute("open")) {
+      event.preventDefault();
+    }
+  });
+
   if (finePointer.matches) {
     menu.addEventListener("mouseenter", () => menu.setAttribute("open", ""));
     menu.addEventListener("mouseleave", () => {
