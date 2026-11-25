@@ -86,3 +86,6 @@ article.dark h3{font-size:clamp(18px,1.5vw,22px)!important;line-height:1.18!impo
 
 /* Spacing for the cost sub-section header */
 .cost-heading{margin-top:46px}
+
+/* Use more of the screen on large displays */
+@media(min-width:1240px){.container,.topbar{width:min(1440px,calc(100% - 7vw))!important;max-width:none!important}.result-band,.current-status{max-width:none!important}}
