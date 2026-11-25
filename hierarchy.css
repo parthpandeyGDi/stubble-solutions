@@ -157,16 +157,6 @@ article.dark h3{font-size:clamp(18px,1.5vw,22px)!important;line-height:1.18!impo
 .gw-step h3{margin:0 0 10px;color:#fff;font-size:22px;letter-spacing:-.03em}
 .gw-step p{margin:0 auto;max-width:330px;color:#c9d8e3;font-size:14.5px;line-height:1.55}
 .gw-step:not(:last-child):after{content:'';position:absolute;top:38px;right:-20px;width:12px;height:12px;border-top:2px solid #f3a688;border-right:2px solid #f3a688;transform:rotate(45deg)}
-.gw-proofs{margin-top:58px;padding-top:30px;border-top:1px solid rgba(255,255,255,.16)}
-.gw-proofs-label{margin:0 0 16px;color:#f3a688;font:500 11px/1 'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase}
-.gw-proof-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.gw-proof{display:flex;flex-direction:column;padding:22px 22px 20px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-top:3px solid #f08a64;color:#fff;text-decoration:none;transition:background .2s,transform .2s}
-.gw-proof:hover{background:rgba(255,255,255,.11);transform:translateY(-3px)}
-.gw-tag{align-self:flex-start;padding:5px 8px;background:rgba(240,138,100,.16);color:#f6b9a2;font:500 9.5px/1 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase}
-.gw-proof h4{margin:14px 0 6px;color:#fff;font-size:19px;letter-spacing:-.02em}
-.gw-proof p{margin:0 0 16px;color:#c9d8e3;font-size:14px;line-height:1.5}
-.gw-proof b{margin-top:auto;color:#f6b9a2;font-size:13px}
-.gw-proof em{font-style:normal;margin-left:6px}
 @media(max-width:860px){
  .gw-flow{grid-template-columns:1fr;gap:26px}
  .gw-flow:before{top:44px;bottom:110px;left:43px;right:auto;width:2px;height:auto;background:repeating-linear-gradient(180deg,rgba(243,166,136,.75) 0 10px,transparent 10px 18px)}
@@ -175,5 +165,14 @@ article.dark h3{font-size:clamp(18px,1.5vw,22px)!important;line-height:1.18!impo
  .gw-step h3{align-self:end}
  .gw-step p{margin:0;max-width:none}
  .gw-step:not(:last-child):after{display:none}
- .gw-proof-grid{grid-template-columns:1fr}
 }
+
+/* GDi's work: steps as panels under the connected nodes */
+.gw-flow{margin-top:60px!important;gap:22px!important}
+.gw-step{padding:0!important}
+.gw-step h3,.gw-step p{position:relative}
+.gw-step .gw-body{margin-top:4px;padding:26px 24px 28px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.13);border-top:3px solid #f08a64;height:calc(100% - 114px);box-sizing:border-box}
+.gw-step .gw-body h3{font-size:23px}
+.gw-step .gw-body p{max-width:none;font-size:15px}
+.gw-node{margin-bottom:22px!important;background:#0e2233}
+@media(max-width:860px){.gw-step .gw-body{height:auto;margin:0;padding:18px 18px 20px}.gw-step{grid-template-columns:88px 1fr!important}.gw-step .gw-body{grid-row:span 2}}
