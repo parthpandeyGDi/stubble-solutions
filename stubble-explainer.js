@@ -15,9 +15,9 @@
   var SCENES = [
     { t: 0, name: 'Harvest', cap: 'Autumn in Punjab: the paddy crop is ready for harvest.' },
     { t: 5, name: 'Combine', cap: 'A combine harvester cuts the crop and keeps only the grain.' },
-    { t: 12, name: 'Stubble', cap: 'What it leaves behind is stubble: short stalks still rooted, and loose straw thrown out behind the machine.' },
+    { t: 12, name: 'Stubble', cap: 'Two things are left behind: stubble, the short stalks still rooted in the soil, and paddy straw, the loose cut straw spread across the field.' },
     { t: 18, name: 'Deadline', cap: 'Wheat has to be sown within a few weeks, so the field must be cleared fast.' },
-    { t: 24, name: 'Choice', cap: 'Burning clears it in hours but fills the air with smoke. Managing it keeps the straw as mulch or sends it to industry.' }
+    { t: 24, name: 'Choice', cap: 'Burning clears the stubble and straw in hours but fills the air with smoke. Managing them keeps the residue as mulch or sends the straw to industry.' }
   ];
   var T = 31;
 
@@ -72,19 +72,27 @@
   el('circle', { r: 26, fill: '#222' }, w2); el('circle', { r: 10, fill: '#8a8a8a' }, w2);
   var dust = el('g', {}, field);
 
-  /* ---------- zoom labels (not scaled) ---------- */
+  /* ---------- zoom labels (not scaled, anchors follow the zoom) ---------- */
   var labels = el('g', { opacity: 0 }, svg);
-  function tag(x, y, tx, ty, text, fill) {
+  function tag(text, sub, fill, tx, ty) {
     var g = el('g', {}, labels);
-    el('path', { d: 'M' + x + ' ' + y + ' L' + tx + ' ' + (ty + 20), stroke: '#16314a', 'stroke-width': 2, 'stroke-dasharray': '5 5' }, g);
-    el('circle', { cx: x, cy: y, r: 6, fill: fill, stroke: '#fff', 'stroke-width': 2 }, g);
-    var w = text.length * 9.6 + 32;
-    el('rect', { x: tx - w / 2, y: ty - 18, width: w, height: 38, rx: 6, fill: fill }, g);
-    var t = el('text', { x: tx, y: ty + 7, 'text-anchor': 'middle', class: 'se-t' }, g); t.textContent = text;
-    return g;
+    var line = el('path', { stroke: '#16314a', 'stroke-width': 2, 'stroke-dasharray': '5 5', fill: 'none' }, g);
+    var ring = el('circle', { r: 9, fill: 'none', stroke: fill, 'stroke-width': 3 }, g);
+    var dot = el('circle', { r: 4, fill: fill }, g);
+    var w = Math.max(text.length * 10.2, sub.length * 7.4) + 36;
+    el('rect', { x: tx - w / 2, y: ty - 26, width: w, height: 54, rx: 8, fill: fill }, g);
+    var t1 = el('text', { x: tx, y: ty - 2, 'text-anchor': 'middle', class: 'se-t' }, g); t1.textContent = text;
+    var t2 = el('text', { x: tx, y: ty + 18, 'text-anchor': 'middle', class: 'se-sub' }, g); t2.textContent = sub;
+    return { g: g, line: line, ring: ring, dot: dot, tx: tx, ty: ty };
   }
-  var tagA = tag(300, 300, 250, 150, 'Standing stubble', '#16314a');
-  var tagB = tag(640, 330, 700, 190, 'Loose straw', '#cb3200');
+  var tagA = tag('Stubble', 'stalks still rooted in the soil', '#16314a', 250, 150);
+  var tagB = tag('Paddy straw', 'loose straw cut by the combine', '#cb3200', 690, 150);
+  function placeTag(tg, x, y, s, z) {
+    var X = 480 + (x - 480) * s, Y = (GROUND - GROUND * s + z * 60) + y * s;
+    tg.ring.setAttribute('cx', X); tg.ring.setAttribute('cy', Y);
+    tg.dot.setAttribute('cx', X); tg.dot.setAttribute('cy', Y);
+    tg.line.setAttribute('d', 'M' + tg.tx + ' ' + (tg.ty + 28) + ' L' + X + ' ' + (Y - 10));
+  }
 
   /* ---------- deadline overlay ---------- */
   var dl = el('g', { opacity: 0 }, svg);
@@ -161,7 +169,7 @@
       s.head.setAttribute('transform', 'rotate(' + (18 + sway) + ' ' + (s.x + sway + 4) + ' ' + (top - 4) + ')');
       s.head.setAttribute('opacity', cut ? 0 : 1);
       if (cut && !s.straw) {
-        s.straw = el('path', { stroke: '#dcb75c', 'stroke-width': 3, 'stroke-linecap': 'round', d: 'M' + (s.x - 8 - (k % 3) * 6) + ' ' + (GROUND - 3 - (k % 2) * 4) + ' l' + (22 + (k % 4) * 5) + ' ' + (-(3 + k % 3 * 3)) }, strawLayer);
+        s.straw = el('path', { stroke: '#e6c46c', 'stroke-width': 3.4, 'stroke-linecap': 'round', d: 'M' + (s.x + 3) + ' ' + (GROUND - 2 - (k % 2) * 2) + ' l' + (14 + (k % 3) * 2) + ' ' + (-(1 + k % 2)) }, strawLayer);
       }
       if (!cut && s.straw) { strawLayer.removeChild(s.straw); s.straw = null; }
     });
@@ -179,8 +187,11 @@
     field.setAttribute('transform', 'translate(' + (480 - 480 * s) + ' ' + (GROUND - GROUND * s + z * 60) + ') scale(' + s + ')');
     hills.setAttribute('opacity', .7 * (1 - z));
     labels.setAttribute('opacity', ease(seg(time, 13.4, 14.2)) * (1 - seg(time, 17.2, 17.8)));
-    tagA.setAttribute('opacity', ease(seg(time, 13.4, 14)));
-    tagB.setAttribute('opacity', ease(seg(time, 14.6, 15.2)));
+    var sa = stalks[18], sb = stalks[26];
+    placeTag(tagA, sa.x, GROUND - 18, s, z);
+    placeTag(tagB, sb.x + 11, GROUND - 4, s, z);
+    tagA.g.setAttribute('opacity', ease(seg(time, 13.4, 14)));
+    tagB.g.setAttribute('opacity', ease(seg(time, 14.6, 15.2)));
     /* deadline */
     var dlo = ease(seg(time, 18, 18.7)) * (1 - ease(seg(time, 23.3, 24)));
     dl.setAttribute('opacity', dlo);
