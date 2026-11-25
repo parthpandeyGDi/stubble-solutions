@@ -69,3 +69,14 @@ article.dark h3{font-size:clamp(18px,1.5vw,22px)!important;line-height:1.18!impo
 .site-name b{font:700 17px/1 'DM Sans',Arial,sans-serif;letter-spacing:-.03em;color:#204b75}
 .site-name small{font:500 9.5px/1 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#cb3200}
 @media(max-width:860px){.site-name{display:none}}
+
+/* Top bar background runs the full width of the screen */
+.topbar{box-shadow:0 0 0 100vmax rgba(250,249,245,.97);clip-path:inset(0 -100vmax)}
+
+/* Section titles sit in a header box */
+.kicker.section-title{width:100%;box-sizing:border-box;padding:20px 26px 20px 22px;background:#fff;border:1px solid #dfe5e7;border-left:5px solid #cb3200;align-items:center!important}
+.kicker.section-title.on-dark{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2);border-left-color:#f08a64}
+.section-title .section-num{transform:none}
+
+/* Spacing for the cost sub-section header */
+.cost-heading{margin-top:46px}
